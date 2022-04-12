@@ -24,7 +24,7 @@
 </li> --}}
 
 <li class="side-menus {{ Request::is('documentoAutos*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('documentoAutos.index') }}"><i class="fas fa-laptop"></i><span>Documento
+    <a class="nav-link" href="{{ route('documentoAutos.index') }}"><i class="fas fa-laptop"></i><span>Expedientes
             Autos</span></a>
 </li>
 
