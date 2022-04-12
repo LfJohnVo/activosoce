@@ -1,31 +1,31 @@
 @extends('layouts.app')
 @section('title')
-    Create Contrato 
+    Create Contrato
 @endsection
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading m-0">New Contrato</h3>
+            <h3 class="page__heading m-0">Nuevo Contrato</h3>
             <div class="filter-container section-header-breadcrumb row justify-content-md-end">
-                <a href="{{ route('contratos.index') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('contratos.index') }}" class="btn btn-primary">Volver</a>
             </div>
         </div>
         <div class="content">
             @include('stisla-templates::common.errors')
             <div class="section-body">
-               <div class="row">
-                   <div class="col-lg-12">
-                       <div class="card">
-                           <div class="card-body ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body ">
                                 {!! Form::open(['route' => 'contratos.store']) !!}
-                                    <div class="row">
-                                        @include('contratos.fields')
-                                    </div>
+                                <div class="row">
+                                    @include('contratos.fields')
+                                </div>
                                 {!! Form::close() !!}
-                           </div>
-                       </div>
-                   </div>
-               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

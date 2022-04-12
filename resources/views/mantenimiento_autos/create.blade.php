@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Create Mantenimiento Auto
+    Mantenimiento Auto
 @endsection
 @section('content')
     <section class="section">

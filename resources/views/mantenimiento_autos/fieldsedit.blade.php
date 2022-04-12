@@ -1,10 +1,10 @@
 <!-- Idauto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('idAuto', 'Auto:') !!}
-    <select class="form-control" id="idAuto" name="idAuto" required>
+    <select class="form-control" id="idAuto" name="idAuto">
         <option value="">Seleccione una opción </option>
         @foreach ($autos as $auto)
-            <option value="{{ $auto->id }}">
+            <option value="{{ $auto->id }}" {{ $auto->id == $mantenimientoAuto->idAuto ? 'selected' : '' }}>
                 {{ $auto->placas }}</option>
         @endforeach
     </select>
@@ -13,10 +13,11 @@
 <!-- Idtaller Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('idTaller', 'Taller:') !!}
-    <select class="form-control" id="idTaller" name="idTaller" required>
+    <select class="form-control" id="idTaller" name="idTaller">
         <option value="">Seleccione una opción </option>
         @foreach ($talleres as $taller)
-            <option value="{{ $taller->id }}">
+            <option value="{{ $taller->id }}"
+                {{ $taller->id == $mantenimientoAuto->idTaller ? 'selected' : '' }}>
                 {{ $taller->nombreTaller }}</option>
         @endforeach
     </select>
@@ -25,13 +26,13 @@
 <!-- Kilometraje Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('kilometraje', 'Kilometraje:') !!}
-    {!! Form::number('kilometraje', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::number('kilometraje', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Fechaingreso Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fechaIngreso', 'Fecha ingreso:') !!}
-    {!! Form::date('fechaIngreso', null, ['class' => 'form-control', 'id' => 'datepicker', 'required']) !!}
+    {!! Form::text('fechaIngreso', null, ['class' => 'form-control', 'id' => 'datepicker']) !!}
 </div>
 
 @push('scripts')
@@ -54,7 +55,7 @@
 <!-- Fechaentrega Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fechaEntrega', 'Fecha entrega:') !!}
-    {!! Form::date('fechaEntrega', null, ['class' => 'form-control', 'id' => 'fechaEntrega' , 'required']) !!}
+    {!! Form::text('fechaEntrega', null, ['class' => 'form-control', 'id' => 'fechaEntrega']) !!}
 </div>
 
 @push('scripts')
@@ -70,7 +71,7 @@
 <!-- Motivoingreso Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('motivoIngreso', 'Motivo ingreso:') !!}
-    {!! Form::text('motivoIngreso', null, ['class' => 'form-control', 'maxlength' => 2000, 'maxlength' => 2000, 'required']) !!}
+    {!! Form::text('motivoIngreso', null, ['class' => 'form-control', 'maxlength' => 2000, 'maxlength' => 2000]) !!}
 </div>
 
 <!-- Submit Field -->

@@ -1,19 +1,25 @@
 <!-- Id Arrendadora Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('id_arrendadora', 'Id Arrendadora:') !!}
-    {!! Form::number('id_arrendadora', null, ['class' => 'form-control']) !!}
+    {!! Form::label('id_arrendadora', 'Arrendadora:') !!}
+    <select class="form-control" id="id_arrendadora" name="id_arrendadora" required>
+        <option value="">Seleccione una opción </option>
+        @foreach ($arrendadoras as $arre)
+            <option value="{{ $arre->id }}">
+                {{ $arre->nombre }}</option>
+        @endforeach
+    </select>
 </div>
 
 <!-- Plazo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('plazo', 'Plazo:') !!}
-    {!! Form::text('plazo', null, ['class' => 'form-control','maxlength' => 32,'maxlength' => 32]) !!}
+    {!! Form::text('plazo', null, ['class' => 'form-control', 'maxlength' => 32, 'maxlength' => 32, 'required']) !!}
 </div>
 
 <!-- Fecha Inicio Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha_inicio', 'Fecha Inicio:') !!}
-    {!! Form::text('fecha_inicio', null, ['class' => 'form-control','id'=>'fecha_inicio']) !!}
+    {!! Form::date('fecha_inicio', null, ['class' => 'form-control', 'id' => 'fecha_inicio', 'required']) !!}
 </div>
 
 @push('scripts')
@@ -29,7 +35,7 @@
 <!-- Fecha Final Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha_final', 'Fecha Final:') !!}
-    {!! Form::text('fecha_final', null, ['class' => 'form-control','id'=>'fecha_final']) !!}
+    {!! Form::date('fecha_final', null, ['class' => 'form-control', 'id' => 'fecha_final', 'required']) !!}
 </div>
 
 @push('scripts')
@@ -62,6 +68,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('contratos.index') }}" class="btn btn-light">Cancel</a>
+    {!! Form::submit('Enviar', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('contratos.index') }}" class="btn btn-light">Cancelar</a>
 </div>

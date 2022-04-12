@@ -11,6 +11,7 @@ use App\Repositories\ContratoRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateContratoRequest;
 use App\Http\Requests\UpdateContratoRequest;
+use App\Models\Arrendadora;
 
 class ContratoController extends AppBaseController
 {
@@ -44,7 +45,9 @@ class ContratoController extends AppBaseController
      */
     public function create()
     {
-        return view('contratos.create');
+        $arrendadoras = DB::table('arrendadoras')->select('id', 'nombre')->get();
+
+        return view('contratos.create', compact('arrendadoras'));
     }
 
     /**
@@ -54,13 +57,13 @@ class ContratoController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateContratoRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
 
         $contrato = $this->contratoRepository->create($input);
 
-        Flash::success('Contrato saved successfully.');
+        Flash::success('Contrato añadido.');
 
         return redirect(route('contratos.index'));
     }
@@ -94,7 +97,7 @@ class ContratoController extends AppBaseController
      */
     public function edit($id)
     {
-        $contrato = $this->contratoRepository->find($id);
+        $contrato = DB::table('contratos')->where('id', '=', $id)->first();
 
         if (empty($contrato)) {
             Flash::error('Contrato not found');
@@ -102,7 +105,9 @@ class ContratoController extends AppBaseController
             return redirect(route('contratos.index'));
         }
 
-        return view('contratos.edit')->with('contrato', $contrato);
+        $arrendadoras = DB::table('arrendadoras')->select('id', 'nombre')->get();
+
+        return view('contratos.edit', compact('arrendadoras'))->with('contrato', $contrato);
     }
 
     /**
@@ -113,9 +118,9 @@ class ContratoController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateContratoRequest $request)
+    public function update($id, Request $request)
     {
-        $contrato = $this->contratoRepository->find($id);
+        $contrato = DB::table('contratos')->find($id);
 
         if (empty($contrato)) {
             Flash::error('Contrato not found');
@@ -123,9 +128,19 @@ class ContratoController extends AppBaseController
             return redirect(route('contratos.index'));
         }
 
-        $contrato = $this->contratoRepository->update($request->all(), $id);
+        $contratos = DB::table('contratos')->where('id', $id)->update([
+            'id' => 'id',
+            'id_arrendadora' => 'id_arrendadora',
+            'plazo' => 'plazo',
+            'fecha_inicio' => 'fecha_inicio',
+            'fecha_final' => 'fecha_final',
+            'monto_inicial' => 'monto_inicial',
+            'monto_mensualidad' => 'monto_mensualidad',
+            'estatus' => 'estatus',
 
-        Flash::success('Contrato updated successfully.');
+        ]);
+
+        Flash::success('Contrato actualizada.');
 
         return redirect(route('contratos.index'));
     }
@@ -141,7 +156,7 @@ class ContratoController extends AppBaseController
      */
     public function destroy($id)
     {
-        $contrato = $this->contratoRepository->find($id);
+        $contrato = DB::table('contratos')->where('id', $id)->first();
 
         if (empty($contrato)) {
             Flash::error('Contrato not found');
@@ -149,9 +164,9 @@ class ContratoController extends AppBaseController
             return redirect(route('contratos.index'));
         }
 
-        $this->contratoRepository->delete($id);
+        $contrato = DB::table('contratos')->where('id', $id)->delete();
 
-        Flash::success('Contrato deleted successfully.');
+        Flash::success('Contrato eliminado.');
 
         return redirect(route('contratos.index'));
     }

@@ -58,7 +58,7 @@ class TenenciaController extends AppBaseController
 
         $tenencia = $this->tenenciaRepository->create($input);
 
-        Flash::success('Tenencia saved successfully.');
+        Flash::success('Tenencia añadida.');
 
         return redirect(route('tenencias.index'));
     }
@@ -123,7 +123,7 @@ class TenenciaController extends AppBaseController
 
         $tenencia = $this->tenenciaRepository->update($request->all(), $id);
 
-        Flash::success('Tenencia updated successfully.');
+        Flash::success('Tenencia actualizada.');
 
         return redirect(route('tenencias.index'));
     }
@@ -149,7 +149,7 @@ class TenenciaController extends AppBaseController
 
         $this->tenenciaRepository->delete($id);
 
-        Flash::success('Tenencia deleted successfully.');
+        Flash::success('Tenencia eliminada.');
 
         return redirect(route('tenencias.index'));
     }

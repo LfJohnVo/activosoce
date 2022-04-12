@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Create Taller 
+    nuevo Taller
 @endsection
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading m-0">New Taller</h3>
+            <h3 class="page__heading m-0">Nuevo Taller</h3>
             <div class="filter-container section-header-breadcrumb row justify-content-md-end">
-                <a href="{{ route('tallers.index') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('tallers.index') }}" class="btn btn-primary">Volver</a>
             </div>
         </div>
         <div class="content">

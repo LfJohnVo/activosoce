@@ -90,9 +90,9 @@
     <a class="nav-link" href="{{ route('usuarios.index') }}"><i class="fas fa-building"></i><span>Usuarios</span></a>
 </li>
 
-<li class="side-menus {{ Request::is('verificacions*') ? 'active' : '' }}">
+<li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('verificacions.index') }}"><i
-            class="fas fa-building"></i><span>Verificacions</span></a>
+            class="fas fa-building"></i><span>Verificaciones</span></a>
 </li>
 
 <li class="side-menus {{ Request::is('arrendadoras*') ? 'active' : '' }}">

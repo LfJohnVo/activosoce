@@ -6,6 +6,7 @@ use Flash;
 use Response;
 use App\Models\Arrendadora;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\ArrendadoraRepository;
 use App\Http\Requests\CreateArrendadoraRequest;
@@ -30,7 +31,8 @@ class ArrendadoraController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $arrendadoras = Arrendadora::get();
+        //$arrendadoras = Arrendadora::get();
+        $arrendadoras = DB::table('arrendadoras')->get();
 
         return view('arrendadoras.index')
             ->with('arrendadoras', $arrendadoras);
@@ -59,7 +61,7 @@ class ArrendadoraController extends AppBaseController
 
         $arrendadora = $this->arrendadoraRepository->create($input);
 
-        Flash::success('Arrendadora saved successfully.');
+        Flash::success('Arrendadora añadida.');
 
         return redirect(route('arrendadoras.index'));
     }
@@ -124,7 +126,7 @@ class ArrendadoraController extends AppBaseController
 
         $arrendadora = $this->arrendadoraRepository->update($request->all(), $id);
 
-        Flash::success('Arrendadora updated successfully.');
+        Flash::success('Arrendadora actualizada.');
 
         return redirect(route('arrendadoras.index'));
     }
@@ -150,7 +152,7 @@ class ArrendadoraController extends AppBaseController
 
         $this->arrendadoraRepository->delete($id);
 
-        Flash::success('Arrendadora deleted successfully.');
+        Flash::success('Arrendadora eliminada.');
 
         return redirect(route('arrendadoras.index'));
     }
