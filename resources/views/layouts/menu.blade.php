@@ -104,3 +104,8 @@
     <a class="nav-link" href="{{ route('contratos.index') }}"><i
             class="fas fa-building"></i><span>Contratos</span></a>
 </li>
+
+<li class="side-menus">
+    <a class="nav-link" href="https://data.finanzas.cdmx.gob.mx/consulta_adeudos" target="_blank"><i
+            class="fas fa-building"></i><span>Multas</span></a>
+</li>
